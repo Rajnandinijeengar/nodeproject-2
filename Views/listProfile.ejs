@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+<div class="container p-5" style="background-color: #e1eef2;">
+  <h2  style="text-align: center; font-size: 50px;  color: #6fc0db;">All Profiles</h2>
+  
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th style="font-size: 20px; color: #6fc0db;">Name</th>
+        <th style="font-size: 20px; color: #6fc0db;">Email</th>
+        <th style="font-size: 20px; color: #6fc0db;">Phone</th>
+        <th style="font-size: 20px; color: #6fc0db;">Address</th>
+        <th style="font-size: 20px; color: #6fc0db;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(user => { %>
+        <tr>
+          <td style="font-size: 20px; color: rgb(38, 38, 204);"><%= user.name %></td>
+          <td style="font-size: 20px; color: rgb(38, 38, 204);"><%= user.email %></td>
+          <td style="font-size: 20px; color: rgb(38, 38, 204);"><%= user.phone %></td>
+          <td style="font-size: 20px; color: rgb(38, 38, 204);"><%= user.address %></td>
+          <td>
+            <a href="/profile/edit/<%= user._id %>" class="btn  btn-sm" style="height: 40px; width: 45%; background:#add8e6; color: white;">Edit</a>
+            <a href="/profile/delete/<%= user._id %>" class="btn  btn-sm" style="height: 40px; width: 45%; background:#add8e6; color: white;" onclick="return confirm('Are you sure?')">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

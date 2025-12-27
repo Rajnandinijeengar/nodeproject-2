@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Contacts</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #e1eef2;">
+  <div class="container mt-5">
+    <h3  style="text-align: center; font-size: 50px; color: #6fc0db; padding-bottom: 20px;">All Contact Messages</h3>
+    <table class="table table-bordered table-striped" style="background-color: #add8e6;">
+      <thead>
+        <tr>
+          <th style="font-size: 20px; color: rgb(48, 48, 128);">Name</th><th style="font-size: 20px; color: rgb(48, 48, 128);">Email</th><th style="font-size: 20px; color: rgb(48, 48, 128);">Message</th><th style="font-size: 20px; color: rgb(48, 48, 128);">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% contacts.forEach(c => { %>
+          <tr>
+            <td style="font-size: 16px; color: #1f4b7a;"><%= c.name %></td>
+            <td style="font-size: 16px; color: #1f4b7a;"><%= c.email %></td>
+            <td style="font-size: 16px; color: #1f4b7a;"><%= c.message %></td>
+            <td>
+              <a href="/edit/<%= c._id %>" class="btn btn-sm " style="height: 40px; width: 30%; background:rgb(48, 48, 128); color: white;">Edit</a>
+              <a href="/delete/<%= c._id %>" class="btn btn-sm " style="height: 40px; width: 30%; background:rgb(48, 48, 128); color: white;">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+</body>
+</html>

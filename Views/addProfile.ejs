@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= user ? "Edit" : "Add" %> Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f9f9f9;
+    }
+    .gone a img{
+      height: 30px;
+      width: 30px;
+
+    }
+    header {
+      background-color: #add8e6;
+      color: white;
+      padding: 15px 20px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 150px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: #007bff;
+      padding: 8px 12px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      margin-top: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #ccc;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      background-color: #add8e6;
+      color: #555;
+      font-size: 0.9em;
+    }
+  </style>
+<body  class="container-fluid">
+<header>
+  <div class="gone">
+
+<a href="#" style="font-size: 50px; color: white; text-decoration: none;">
+  Trendy-Trove
+</a>
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Products / Shop</a>
+
+ 
+      <a href="#">Categories </a>
+      
+
+  </nav>
+</header>
+
+<div class="wolf mt-2" style="height: 150px; width: 100%;  display: flex; justify-content: center; align-items: center;  background-image: url(/img/beauty.jpg);">
+    <nav class="breadcrumb" style="background-color: transparent;">
+        <a class="breadcrumb-item" href="/" style="font-size: 20px; color: white; text-decoration: none; font-weight: bold;">Index</a>
+        <a class="breadcrumb-item" href="/members" style="font-size: 20px; color: white; text-decoration: none; font-weight: bold;">Profile</a>
+   
+    </nav>
+    </div>
+
+ 
+    <div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8 mt-5 p-5" style="background-color: #e1eef2;">
+ <h2 style="font-size: 40px; color: #6fc0db; text-align: center;"><%= user ? "Edit" : "Add" %> Profile</h2>
+  <form action="<%= user ? '/profile/edit/' + user._id : '/profile/add' %>" method="POST">
+    <div class="form-group">
+      <label style="font-size: 20px; color: #6fc0db;">Name</label>
+      <input type="text" name="name" class="form-control" value="<%= user ? user.name : '' %>" required>
+    </div>
+    <div class="form-group">
+      <label style="font-size: 20px; color: #6fc0db;">Email</label>
+      <input type="email" name="email" class="form-control" value="<%= user ? user.email : '' %>" required>
+    </div>
+    <div class="form-group">
+      <label style="font-size: 20px; color: #6fc0db;">Phone</label>
+      <input type="text" name="phone" class="form-control" value="<%= user ? user.phone : '' %>">
+    </div>
+    <div class="form-group">
+      <label style="font-size: 20px; color: #6fc0db;">Address</label>
+      <textarea name="address" class="form-control"><%= user ? user.address : '' %></textarea>
+    </div>
+    <button type="submit" class="btn  mt-2" style="height: 40px; width: 10%; background:#add8e6; color: white;"><%= user ? "Update" : "Add" %></button>
+    <a href="/profile/list" class="btn  mt-2" style="height: 40px; width: 10%; background:#add8e6; color: white;">Back</a>
+  </form>
+    </div>
+    <div class="col-lg-2">
+
+    
+    </div>
+ 
+</div>
+
+
+
+  <footer class=" text-white mt-5 pt-4 pb-4" >
+  <div class="container">
+    <div class="row">
+
+      <!-- About Section -->
+      <div class="col-md-4 mb-3">
+        <h5 style="font-size: 25px; color: white;"> About Trendy-Trove</h5>
+        <p style="font-size: 16px; color: white;">Your one-stop shop for the latest in fashion, electronics, books, and home essentials. Quality products with great deals!</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2 mb-3">
+        <h5 style="font-size: 25px; color: white;">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a style="font-size: 16px; color: white;" href="/" class="text-white">Home</a></li>
+          <li><a  style="font-size: 16px; color: white;" href="/products" class="text-white">Products</a></li>
+          <li><a style="font-size: 16px; color: white;" href="/shop" class="text-white">Shop</a></li>
+          <li><a style="font-size: 16px; color: white;" href="/contact" class="text-white">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Support -->
+      <div class="col-md-3 mb-3">
+        <h5 style="font-size: 25px; color: white;">Customer Support</h5>
+        <ul class="list-unstyled">
+          <li style="font-size: 16px; color: white;">Email: support@trendy-trove.com</li>
+          <li style="font-size: 16px; color: white;">Phone: +91 12345 67890</li>
+          <li style="font-size: 16px; color: white;">Help Center</li>
+        </ul>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-3 mb-3">
+        <h5 style="font-size: 25px; color: white;">Follow Us</h5>
+        <a style="font-size: 16px; color: white;" href="#" class="text-white mr-3"><i class="fab fa-facebook fa-lg"></i></a>
+        <a style="font-size: 16px; color: white;" href="#" class="text-white mr-3"><i class="fab fa-twitter fa-lg"></i></a>
+        <a style="font-size: 16px; color: white;" href="#" class="text-white mr-3"><i class="fab fa-instagram fa-lg"></i></a>
+        <a style="font-size: 16px; color: white;" href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+      </div>
+
+    </div>
+    <hr color="white">
+    <div class="text-center">
+      &copy; <%= new Date().getFullYear() %> Trendy-Trove. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
